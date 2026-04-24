@@ -1,1 +1,137 @@
+:root {
+    --primary-color: #cacaca;
+    --primary-light-color: #cbffc4;
+    --secondary-color: #FFE4BA;
+    --secondary-light-color: #cacaca;
 
+    --primary-font: 'Cabin', sans-serif;
+    --seconday-font: 'Calistoga', sans-serif;
+      
+    --element-padding: 0.8em;
+    
+    --maximum-width: 320px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+body {
+    color: var(--dark-color);
+    background-color: var(--secondary-light-color);
+    font-family: var(--primary-font);
+}
+
+#titleName, #congrats {
+    text-align: center;
+    margin: 120px auto;
+    display: block;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 80px;
+}
+
+#startBtn, #backToMenu {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+    padding: 30px 40px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #FFFFFF;
+    color: #000000;
+    cursor:  pointer;
+    border: 5px solid #000000
+}
+
+#prompt-data {
+    border: 5px solid #000000
+}
+
+
+button {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: gray;
+}
+
+.confirm-btn {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: #1AFF00;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #000000
+}
+
+.deny-btn {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #000000
+}
+
+.believe-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: #1AFF00;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #000000
+}
+
+.disbelieve-btn{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #000000
+}
+
+.play-btn{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  border: 1px solid #000000
+}

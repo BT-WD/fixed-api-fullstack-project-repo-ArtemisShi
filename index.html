@@ -1,11 +1,135 @@
 <!doctype html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>API Full Stack Project</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30vh;
+      }
+      .vertical-center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .horizontal {
+        display: flex;
+        justify-content: center; 
+      }
+      .vertical-bottom {
+        margin: 0;
+        position: absolute;
+        top: 80%;
+        transform: translateY(-50%);  
+      }
+      .player-pick-position{
+        display: flex;
+        height: 30vh;
+        margin: 0;
+        top: 80%;
+        transform: translateY(-50%); 
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
   </head>
+
+
   <body>
-    <!-- You code goes here-->
+    <!-- <section id = "start-page">
+      <div>
+        <header>
+          <h1 id = "titleName">
+            Never Have I Lied
+          </h1>
+        </header>
+          <div class="container">
+           <button id = "startBtn" onClick="startGame()">Start</button> 
+          </div>
+          <form id = "playersForm" class="player-pick-position">
+            <label>Pick # of players</label> 
+            <select name="players" id="players"></select>
+            <button id = "submitBtn" onClick="pickPlayers()">Submit</button>
+          </form>
+      </div>
+      <div class = "usernames">
+        <input id="username-input" style='visibility: hidden;' type="username" placeholder="Username">
+        <button id="done-btn" style='visibility: hidden;' class="primary-btn" onClick="submitName()">Submit</button>
+      </div>
+    </section> -->
+
+
+    <!-- <section id = "prompt-page">
+      <div id = "prompt">
+        <header>
+          <h1 id = "prompt-data", class = "container">dsf</h1>
+        </header>
+        <div class = "container">
+          <div  class = "vertical-center">
+          <p id = "username"> sd</p>
+          <button id="game-btn" class="play-btn" onClick="play()">Press</button>
+          <h3>Score:</h3>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- <section id = "play-page">
+      <div id = "prompt">
+        <header>
+          <h1 id = "prompt-data", class = "container">dsf</h1>
+        </header>
+
+        <div>
+          <div class = "horizontal">
+            <div  class = "vertical-center">            
+              <p id = "username"> sd</p>
+              <div class = "horizontal">
+                <button id="main-btn" class="confirm-btn" onClick="confirmStatement()">Confirm</button>
+                <button id="main-btn" class="deny-btn" onClick="deconfirm()">Deny</button>
+              </div>
+              <h1>Verdict:</h1>
+              <h2 id="verdict-el"></h2>
+              <h3>Score:</h3>
+            </div>
+          </div>
+        </div>
+
+          <div  class = "vertical-bottom">
+            <p id = "username"> sd</p>
+            <div class = "horizontal">
+              <button id="game-btn" class="believe-btn" onClick="voteTrue()">True</button>
+              <button id="game-btn" class="disbelieve-btn" onClick="voteFalse()">False</button>
+            </div>
+            <h1>Vote:</h1>
+            <h2 id="vote-el"></h2>
+            <h3>Score:</h3>
+          </div>
+      </div>
+    </section> -->
+
+
+    
+    <!-- <section id = "end-page">
+      <div>
+        <header>
+          <h1 id = "congrats"> dff</h1>
+        </header>
+        <div class ="container">
+        <button id="backToMenu" onClick="goMenu()">Go Back to Menu</button>
+        </div>
+      </div>
+    </section> -->
+
+
+    <script src="index.js"></script>
+
   </body>
-</html>
+</html> 
