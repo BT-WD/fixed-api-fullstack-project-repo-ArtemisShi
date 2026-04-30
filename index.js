@@ -11,15 +11,27 @@ const usernameInput = document.getElementById("username-input");
 const doneBtn = document.getElementById("done-btn");
 const verdictEl = document.getElementById("verdict-el");
 const promptEl = document.getElementById("prompt-data");
+const user1 = document.getElementById("username1-input");
+const user2 = document.getElementById("username2-input");
+const user3 = document.getElementById("username3-input");
+const user4 = document.getElementById("username4-input");
+const user5 = document.getElementById("username5-input");
+const playersEl = document.getElementById("players");
+
+  for (let i =1; i< 6; i++) {
+    let option = document.createElement("option");
+    option.text = i;
+    playersEl.appendChild(option);
+  }
 
 const getPrompt = async () => {
     try {
         const response = await fetch(url);
-        console.log("Response status:", response.status); // Check if this is 200
+        console.log("Response status:", response.status);
         
         if (response.ok) {
             const data = await response.json();
-            console.log("Data received:", data); // Check if activity is here
+            console.log("Data received:", data);
             return data.activity; 
         } else {
             console.error("Server returned an error");
@@ -34,6 +46,7 @@ const getPrompt = async () => {
 function pickPlayers() {
   usernameInput.style.visibility = "visible";
   doneBtn.style.visibility = "visible";
+  playersEl
 }
 
 async function startGame() {
@@ -42,7 +55,7 @@ async function startGame() {
     endPage.style.display = "none";
     promptPage.style.display = "block";
     activity = await getPrompt();
-    promptEl.textContent = activity || "Failed to load activity. Try again!";
+    promptEl.textContent = activity
   }
 
   function play() {
@@ -51,6 +64,8 @@ async function startGame() {
     endPage.style.display = "none";
     promptPage.style.display = "none";
     nextBtn.style.visibility = "hidden";
+    verdictEl.textContent = ""
+
   }
 
   function confirmStatement() {

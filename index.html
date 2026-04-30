@@ -17,7 +17,7 @@
         margin: 0;
         position: absolute;
         top: 50%;
-        transform: translateY(-50%);
+        transform: translateY(-45%);
       }
       .horizontal {
         display: flex;
@@ -26,7 +26,7 @@
       .vertical-bottom {
         margin: 0;
         position: absolute;
-        top: 80%;
+        top: 90%;
         transform: translateY(-50%);  
       }
       .player-pick-position{
@@ -37,6 +37,13 @@
         transform: translateY(-50%); 
         justify-content: center;
         align-items: center;
+      }
+      .nextRoundButton{
+        margin: 0;
+        position: absolute;
+        top: 90%;
+        transform: translateY(-50%);  
+        left: 90%;
       }
     </style>
   </head>
@@ -53,20 +60,23 @@
           <div class="container">
            <button id = "startBtn" onClick="startGame()">Start</button> 
           </div>
-          <form id = "playersForm" class="player-pick-position">
+          <div id = "playersForm" class="player-pick-position">
             <label>Pick # of players</label> 
-            <select name="players" id="players">
-              <option value="n1">1</option>
-              <option value="n2">2</option>
-              <option value="n3">3</option>
-              <option value="n4">4</option>
-              <option value="n5">5</option>
+            <select name="players" id="players" style = 'visibility: visible;'>
             </select>
             <button id = "submitBtn" onClick="pickPlayers()">Submit</button>
-          </form>
+          </div>
       </div>
       <div class = "usernames">
-        <input id="username-input" style='visibility: hidden;' type="username" placeholder="Username">
+        <input id="username1-input" style='visibility: hidden;' type="username" placeholder="Username">
+        <button id="done-btn" style='visibility: hidden;' class="primary-btn" onClick="submitName()">Submit</button>
+        <input id="username2-input" style='visibility: hidden;' type="username" placeholder="Username">
+        <button id="done-btn" style='visibility: hidden;' class="primary-btn" onClick="submitName()">Submit</button>
+        <input id="username3-input" style='visibility: hidden;' type="username" placeholder="Username">
+        <button id="done-btn" style='visibility: hidden;' class="primary-btn" onClick="submitName()">Submit</button>
+        <input id="username4-input" style='visibility: hidden;' type="username" placeholder="Username">
+        <button id="done-btn" style='visibility: hidden;' class="primary-btn" onClick="submitName()">Submit</button>
+        <input id="username5-input" style='visibility: hidden;' type="username" placeholder="Username">
         <button id="done-btn" style='visibility: hidden;' class="primary-btn" onClick="submitName()">Submit</button>
       </div>
     </section>
@@ -96,13 +106,13 @@
         <div>
           <div class = "horizontal">
             <div  class = "vertical-center">            
-              <p id = "username"> sd</p>
+              <p id = "username"> </p>
               <div class = "horizontal">
                 <button id="main-btn" class="confirm-btn" onClick="confirmStatement()">Confirm</button>
                 <button id="main-btn" class="deny-btn" onClick="deconfirm()">Deny</button>
               </div>
               <h1>Verdict:</h1>
-              <h2 id="verdict-el"></h2>
+              <p id="verdict-el"></p>
               <h3>Score:</h3>
             </div>
           </div>
@@ -118,9 +128,11 @@
             <h2 id="vote-el"></h2>
             <h3>Score:</h3>
           </div>
+          <div  class = "nextRoundButton">
+            <button id="next-btn" style='visibility: hidden;' class="primary-btn" onClick="startGame()">Next Round</button>
+          </div> 
 
-          <button id="next-btn" style='visibility: hidden;' class="primary-btn" onClick="startGame()">Next Round</button>
-      </div>
+        </div>
     </section>
 
 
@@ -128,7 +140,7 @@
     <section id = "end-page" style='display:none'>
       <div>
         <header>
-          <h1 id = "congrats"> dff</h1>
+          <h1 id = "congrats"> </h1>
         </header>
         <div class ="container">
         <button id="backToMenu" onClick="goMenu()">Go Back to Menu</button>

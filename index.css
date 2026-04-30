@@ -135,3 +135,16 @@ button:hover {
   cursor: pointer;
   border: 1px solid #000000
 }
+
+#next-btn{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+    padding: 30px 40px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #FFFFFF;
+    color: #000000;
+    cursor:  pointer;
+    border: 5px solid #000000
+}
