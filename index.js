@@ -14,15 +14,22 @@ const promptEl = document.getElementById("prompt-data");
 
 const getPrompt = async () => {
     try {
-        let response = await fetch(url);
-        if(response.ok){
-            let jsonResponse = await response.json();
-            return jsonResponse.activity;
-      }
-  } catch (error) {
-    console.log(error);
-  }
-}
+        const response = await fetch(url);
+        console.log("Response status:", response.status); // Check if this is 200
+        
+        if (response.ok) {
+            const data = await response.json();
+            console.log("Data received:", data); // Check if activity is here
+            return data.activity; 
+        } else {
+            console.error("Server returned an error");
+            return null;
+        }
+    } catch (error) {
+        console.error("Network or Fetch error:", error);
+        return null;
+    }
+};
 
 function pickPlayers() {
   usernameInput.style.visibility = "visible";
