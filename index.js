@@ -5,6 +5,10 @@ const playPage = document.getElementById("play-page");
 const endPage = document.getElementById("end-page");
 const points = [];
 const usernames = [];
+const nextBtn = document.getElementById("next-btn");
+const usernameInput = document.getElementById("username-input");
+const doneBtn = document.getElementById("done-btn");
+const verdictEl = document.getElementById("verdict-el");
 
 
 const getPrompt = async () => {
@@ -20,6 +24,11 @@ const getPrompt = async () => {
   }
 }
 
+function pickPlayers() {
+  usernameInput.style.visibility = "visible";
+  doneBtn.style.visibility = "visible";
+}
+
 function startGame() {
     startPage.style.display = "none";
     playPage.style.display = "none";
@@ -32,12 +41,29 @@ function startGame() {
     playPage.style.display = "block";
     endPage.style.display = "none";
     promptPage.style.display = "none";
+    nextBtn.style.visibility = "hidden";
   }
 
   function confirmStatement() {
     startPage.style.display = "none";
     playPage.style.display = "block";
-    endPage.style.display = "none";
     promptPage.style.display = "none";
+    nextBtn.style.visibility = "visible";
+    verdictEl.textContent = "True"
   }
     
+  function deconfirm() {
+    startPage.style.display = "none";
+    playPage.style.display = "block";
+    promptPage.style.display = "none";
+    nextBtn.style.visibility = "visible";
+    verdict = "False"
+  }
+
+  function voteTrue(){
+
+  }
+
+  function voteFalse(){
+
+  }
