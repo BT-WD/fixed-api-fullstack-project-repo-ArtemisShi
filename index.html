@@ -1,155 +1,254 @@
 <!doctype html>
 <html lang="en">
 
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>API Full Stack Project</title>
+    <title>Never Have I Lied</title>
     <link rel="stylesheet" href="index.css">
     <style>
-      .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 30vh;
-      }
-      .vertical-center {
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-45%);
-      }
-      .horizontal {
-        display: flex;
-        justify-content: center; 
-      }
-      .vertical-bottom {
-        margin: 0;
-        position: absolute;
-        top: 90%;
-        transform: translateY(-50%);  
-      }
-      .player-pick-position{
-        display: flex;
-        height: 30vh;
-        margin: 0;
-        top: 80%;
-        transform: translateY(-50%); 
-        justify-content: center;
-        align-items: center;
-      }
-      .nextRoundButton{
-        margin: 0;
-        position: absolute;
-        top: 90%;
-        transform: translateY(-50%);  
-        left: 90%;
-      }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #cacaca;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .vertical-center {
+            text-align: center;
+            padding: 20px;
+        }
+        .horizontal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .players {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .nextRoundButton {
+            text-align: right;
+            margin: 20px;
+        }
+        .database-stats {
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            border: 2px solid black;
+            background-color: #f0f0f0;
+            max-width: 300px;
+        }
+        .history-section {
+            margin: 20px auto;
+            padding: 10px;
+            border: 2px solid black;
+            background-color: #f0f0f0;
+            max-height: 300px;
+            overflow-y: auto;
+            max-width: 500px;
+        }
+        .usernames {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .confirm-btn, .deny-btn, .believe-btn, .disbelieve-btn, .play-btn {
+            cursor: pointer;
+            border: 2px solid black;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .confirm-btn, .believe-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .deny-btn, .disbelieve-btn {
+            background-color: #f44336;
+            color: white;
+        }  
+        .score-display {
+            background-color: white;
+            border: 2px solid black;
+            padding: 10px;
+            margin: 10px;
+            font-weight: bold;
+        }
+        #prompt-data, #prompt-data-play {
+            background-color: white;
+            border: 2px solid black;
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        section {
+            background-color: #FFE4BA;
+            border: 3px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        button {
+            cursor: pointer;
+        }
+        .voter-card {
+            border: 2px solid black;
+            padding: 15px;
+            margin: 10px;
+            background-color: white;
+            display: inline-block;
+            min-width: 200px;
+        }
+        .voters-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .voted-status {
+            margin-top: 10px;
+            font-size: 12px;
+            color: green;
+        }
     </style>
-  </head>
+</head>
 
-
-  <body>
-    <section id = "start-page">
-      <div>
-        <header>
-          <h1 id = "titleName">
-            Never Have I Lied
-          </h1>
-        </header>
-          <div class="container">
-           <button id = "startBtn" onClick="startGame()">Start</button> 
-          </div>
-          <div id = "playersForm" class="player-pick-position">
-            <label>Pick # of players</label> 
-            <select name="players" id="players" style = 'visibility: visible;'>
-            </select>
-            <button id = "submitBtn" onClick="pickPlayers()">Submit</button>
-          </div>
-      </div>
-      <div class = "usernames">
-        <input id="username1-input" style='visibility: hidden;' type="username" placeholder="Username">
-        <button id="done-btn" style='visibility: hidden;' class="primary-btn" onClick="submitName()">Submit</button>
-        <input id="username2-input" style='visibility: hidden;' type="username" placeholder="Username">
-        <button id="done-btn" style='visibility: hidden;' class="primary-btn" onClick="submitName()">Submit</button>
-        <input id="username3-input" style='visibility: hidden;' type="username" placeholder="Username">
-        <button id="done-btn" style='visibility: hidden;' class="primary-btn" onClick="submitName()">Submit</button>
-        <input id="username4-input" style='visibility: hidden;' type="username" placeholder="Username">
-        <button id="done-btn" style='visibility: hidden;' class="primary-btn" onClick="submitName()">Submit</button>
-        <input id="username5-input" style='visibility: hidden;' type="username" placeholder="Username">
-        <button id="done-btn" style='visibility: hidden;' class="primary-btn" onClick="submitName()">Submit</button>
-      </div>
-    </section>
-
-
-    <section id = "prompt-page" style='display:none'>
-      <div id = "prompt">
-        <header>
-          <h1 id = "prompt-data", class = "container"></h1>
-        </header>
-        <div class = "container">
-          <div  class = "vertical-center">
-          <p id = "username"> </p>
-          <button id="game-btn" class="play-btn" onClick="play()">Press</button>
-          <h3>Score:</h3>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id = "play-page" style='display:none'>
-      <div id = "prompt">
-        <header>
-          <h1 id = "prompt-data", class = "container"></h1>
-        </header>
-
+<body>
+    <section id="start-page">
         <div>
-          <div class = "horizontal">
-            <div  class = "vertical-center">            
-              <p id = "username"> </p>
-              <div class = "horizontal">
-                <button id="main-btn" class="confirm-btn" onClick="confirmStatement()">Confirm</button>
-                <button id="main-btn" class="deny-btn" onClick="deconfirm()">Deny</button>
-              </div>
-              <h1>Verdict:</h1>
-              <p id="verdict-el"></p>
-              <h3>Score:</h3>
+            <header>
+                <h1 id="titleName">Never Have I Lied</h1>
+            </header>
+            
+            <div class="database-stats">
+                <h3>Game Stats</h3>
+                <div id="dbStats"></div>
             </div>
-          </div>
+            
+            <div class="container">
+                <button id="startBtn">Start Game</button>
+            </div>
+            
+            <div id="playersForm" class="players">
+                <label>Pick # of players</label>
+                <select name="players" id="players" style="visibility: visible;">
+                </select>
+                <button id="submitBtn">Submit</button>
+            </div>
+        </div>
+        
+        <div class="usernames">
+            <input id="username1-input" style="visibility: hidden;" type="text" placeholder="Username">
+            <button id="done-btn1" style="visibility: hidden;" class="primary-btn">Save</button>
+            <input id="username2-input" style="visibility: hidden;" type="text" placeholder="Username">
+            <button id="done-btn2" style="visibility: hidden;" class="primary-btn">Save</button>
+            <input id="username3-input" style="visibility: hidden;" type="text" placeholder="Username">
+            <button id="done-btn3" style="visibility: hidden;" class="primary-btn">Save</button>
+            <input id="username4-input" style="visibility: hidden;" type="text" placeholder="Username">
+            <button id="done-btn4" style="visibility: hidden;" class="primary-btn">Save</button>
+            <input id="username5-input" style="visibility: hidden;" type="text" placeholder="Username">
+            <button id="done-btn5" style="visibility: hidden;" class="primary-btn">Save</button>
         </div>
 
-          <div  class = "vertical-bottom">
-            <p id = "username"> </p>
-            <div class = "horizontal">
-              <button id="game-btn" class="believe-btn" onClick="voteTrue()">True</button>
-              <button id="game-btn" class="disbelieve-btn" onClick="voteFalse()">False</button>
-            </div>
-            <h1>Vote:</h1>
-            <h2 id="vote-el"></h2>
-            <h3>Score:</h3>
-          </div>
-          <div  class = "nextRoundButton">
-            <button id="next-btn" style='visibility: hidden;' class="primary-btn" onClick="startGame()">Next Round</button>
-          </div> 
-
+        <div class="history-section">
+            <h3>Winners</h3>
+            <div id="historyList"></div>
         </div>
     </section>
 
-
-    
-    <section id = "end-page" style='display:none'>
-      <div>
-        <header>
-          <h1 id = "congrats"> </h1>
-        </header>
-        <div class ="container">
-        <button id="backToMenu" onClick="goMenu()">Go Back to Menu</button>
+    <section id="prompt-page" style="display:none">
+        <div id="prompt">
+            <header>
+                <h1 id="prompt-data" class="container"></h1>
+            </header>
+            <div class="vertical-center">
+                <div id="playersButtonsContainer"></div>
+                <div class="score-display" id="scoreDisplayPrompt">Scores: </div>
+            </div>
         </div>
-      </div>
     </section>
 
+    <section id="vote-page" style="display:none">
+        <div id="vote">
+            <header>
+                <h1 id="vote-prompt-data" class="container"></h1>
+            </header>
+            <div class="vertical-center">
+                <p id="claiming-player" style="font-size: 20px; font-weight: bold; margin: 20px;"></p>
+                <h3>Do you believe them?</h3>
+                <div id="votersContainer" class="voters-grid"></div>
+                <div class="score-display" id="scoreDisplayVote">Scores: </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reveal-page" style="display:none">
+        <div id="reveal">
+            <header>
+                <h1 id="reveal-prompt-data" class="container"></h1>
+            </header>
+            <div class="vertical-center">
+                <p id="reveal-player" style="font-size: 20px; font-weight: bold;"></p>
+                <div class="truth-buttons-container">
+                    <button id="reveal-truth-btn" class="confirm-btn">True</button>
+                    <button id="reveal-lie-btn" class="deny-btn">False</button>
+                </div>
+                <div class="score-display" id="scoreDisplayReveal">Scores: </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="play-page" style="display:none">
+        <div id="play">
+            <header>
+                <h1 id="prompt-data-play" class="container"></h1>
+            </header>
+
+            <div class="vertical-center">
+                <h2>Round Results:</h2>
+                <p id="verdict-el" class="score-display"></p>
+                <p id="points-el" class="score-display"></p>
+                <div class="score-display" id="scoreDisplayPlay">Scores: </div>
+            </div>
+            
+            <div class="nextRoundButton">
+                <button id="next-btn" style="visibility: hidden;" class="primary-btn">Next Round</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="end-page" style="display:none">
+        <div>
+            <header>
+                <h1 id="congrats">Game Over</h1>
+            </header>
+            <div id="finalScoresList" class="score-display"></div>
+            <div class="container">
+                <button id="backToMenu">Play Again</button>
+            </div>
+        </div>
+    </section>
 
     <script src="index.js"></script>
+</body>
 
-  </body>
-</html> 
+</html>
